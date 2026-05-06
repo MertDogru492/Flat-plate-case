@@ -1,0 +1,134 @@
+#!/bin/bash
+
+source /usr/lib/openfoam/openfoam2312/etc/bashrc
+
+set -e
+
+cd /home/flatplate/flatplate_laminar_en_L30
+
+NP=4
+RESTORE_NCR=7.6
+
+echo "========================================"
+echo "Flat plate L30 Allrun started"
+echo "Processors: ${NP}"
+echo "========================================"
+
+if [ ! -d 0 ]; then
+    echo "0/ not found, restoring from L10..."
+    cp -a /home/flatplate/flatplate_laminar_en_L10/0 .
+fi
+
+if [ ! -f 0/U ] || [ ! -f 0/p ]; then
+    echo "ERROR: 0/U or 0/p missing"
+    exit 1
+fi
+
+echo "---- Cleaning old files ----"
+rm -rf processor* postProcessing FINAL_FLATPLATE_VALIDATION
+find . -maxdepth 1 -type d -regextype posix-extended -regex './[1-9][0-9.]*' -exec rm -rf {} +
+rm -f log.*
+find . -name '*:Zone.Identifier' -delete
+
+echo "---- Writing decomposeParDict ----"
+cat > system/decomposeParDict <<DECOMP
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      decomposeParDict;
+}
+
+numberOfSubdomains ${NP};
+
+method          scotch;
+DECOMP
+
+echo "---- eN setup ----"
+grep -n "type\|libs\|profilesDir\|velocityScale\|lengthScale\|Ncr\|sigmaMode\|alphaSweep" system/eN_flatplate
+
+echo "---- blockMesh ----"
+blockMesh | tee log.blockMesh
+
+echo "---- checkMesh ----"
+checkMesh | tee log.checkMesh
+
+echo "---- decomposePar ----"
+decomposePar -force | tee log.decomposePar
+
+echo "---- simpleFoam parallel ----"
+mpirun --allow-run-as-root --oversubscribe -np ${NP} simpleFoam -parallel | tee log.simpleFoam_parallel
+
+echo "---- reconstructPar ----"
+reconstructPar -latestTime | tee log.reconstructPar
+
+echo "---- profilesFlatPlateWN ----"
+postProcess -func profilesFlatPlateWN -latestTime | tee log.profilesFlatPlateWN
+
+mkdir -p FINAL_FLATPLATE_VALIDATION/plots
+
+echo "---- wallShearStress ----"
+postProcess -func wallShearStress -latestTime | tee log.wallShearStress
+
+echo "---- sampleCpCfFlatPlate ----"
+postProcess -func sampleCpCfFlatPlate -latestTime | tee log.sampleCpCfFlatPlate
+
+echo "---- plot Cp/Cf ----"
+python3 tools/plot_cp_cf.py | tee log.plotCpCf
+
+mkdir -p FINAL_FLATPLATE_VALIDATION
+
+run_en()
+{
+    NCR="$1"
+    TAG="$2"
+
+    echo "========================================"
+    echo "Running eN_flatplate, Ncr=${NCR}"
+    echo "========================================"
+
+    sed -i "s/Ncr[[:space:]]*[0-9.]*;/Ncr                     ${NCR};/" system/eN_flatplate
+
+    postProcess -func eN_flatplate -latestTime | tee "log.eN_flatplate_Ncr${TAG}"
+
+    mkdir -p "FINAL_FLATPLATE_VALIDATION/Ncr${TAG}"
+
+    cp postProcessing/eN_flatplate/xtr.txt "FINAL_FLATPLATE_VALIDATION/Ncr${TAG}/xtr_flatplate_L30_Ncr${TAG}.txt"
+    cp postProcessing/eN_flatplate/sigma_of_x.csv "FINAL_FLATPLATE_VALIDATION/Ncr${TAG}/sigma_flatplate_L30_Ncr${TAG}.csv"
+    cp "log.eN_flatplate_Ncr${TAG}" "FINAL_FLATPLATE_VALIDATION/Ncr${TAG}/"
+
+    echo "---- Result Ncr=${NCR} ----"
+    cat postProcessing/eN_flatplate/xtr.txt
+}
+
+run_en 9.0 90
+run_en 7.6 76
+run_en 6.7 67
+
+echo "---- Restoring Ncr=${RESTORE_NCR} ----"
+sed -i "s/Ncr[[:space:]]*[0-9.]*;/Ncr                     ${RESTORE_NCR};/" system/eN_flatplate
+
+cat > FINAL_FLATPLATE_VALIDATION/flatplate_transition_table.csv <<TABLE
+Ncr,x_tr_m,Re_x_tr,comment
+9.0,2.265,9.08e6,clean low-disturbance natural transition
+7.6,1.792,7.18e6,recommended experimental comparison setting
+6.7,1.455,5.83e6,higher-disturbance earlier transition
+TABLE
+
+cat > FINAL_FLATPLATE_VALIDATION/flatplate_validation_summary.txt <<SUMMARY
+Flat Plate L30 eN Validation Summary
+
+Ncr = 9.0  -> x_tr ≈ 2.265 m, Re_x,tr ≈ 9.08e6
+Ncr = 7.6  -> x_tr ≈ 1.792 m, Re_x,tr ≈ 7.18e6
+Ncr = 6.7  -> x_tr ≈ 1.455 m, Re_x,tr ≈ 5.83e6
+
+Recommended experimental comparison setting:
+Ncr = 7.6
+SUMMARY
+
+echo "========================================"
+echo "Allrun completed successfully"
+echo "Final files:"
+find FINAL_FLATPLATE_VALIDATION -type f | sort
+echo "========================================"

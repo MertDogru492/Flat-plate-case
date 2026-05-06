@@ -1,0 +1,23 @@
+type                    eNTransition;
+libs                    ("libeNTransition.so");
+
+profilesDir             "/home/flatplate/flatplate_laminar_en/postProcessing/profilesFlatPlateWN_early";
+outputPrefix            eN_flatplate_early;
+
+kinematicViscosity       1.5e-05;
+velocityScale            1.0;
+lengthScale              3.0;
+
+Ncr                     9.0;
+sigmaMode               gaster;
+edgeThreshold           0.995;
+
+alphaSweep              (0.005 3.0 0.01);
+alphaFDStep             0.02;
+
+useVelocityMagnitude    true;
+useLocalEdgeDirection   false;
+velocityDirection       (1 0 0);
+
+insertWallPoint         true;
+wallPointEpsilon        1e-6;

@@ -1,0 +1,20 @@
+type            sets;
+libs            (sampling);
+
+writeControl    writeTime;
+setFormat       csv;
+interpolationScheme cellPointFace;
+
+fields          (p wallShearStress);
+
+sets
+(
+    plateLine
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.100000 0.000001 0.005);
+        end     (3.000000 0.000001 0.005);
+        nPoints 800;
+    }
+);

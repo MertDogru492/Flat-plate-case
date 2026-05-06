@@ -1,0 +1,108 @@
+type            sets;
+libs            ("libsampling.so");
+
+writeControl    writeTime;
+writeInterval   1;
+
+interpolationScheme cellPoint;
+setFormat       csv;
+
+sets
+(
+
+    x_100
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.300000 0.000001 0.005);
+        end     (0.300000 0.120000 0.005);
+        nPoints 320;
+    }
+
+    x_200
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.600000 0.000001 0.005);
+        end     (0.600000 0.120000 0.005);
+        nPoints 320;
+    }
+
+    x_300
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.900000 0.000001 0.005);
+        end     (0.900000 0.120000 0.005);
+        nPoints 320;
+    }
+
+    x_400
+    {
+        type    uniform;
+        axis    distance;
+        start   (1.200000 0.000001 0.005);
+        end     (1.200000 0.120000 0.005);
+        nPoints 320;
+    }
+
+    x_500
+    {
+        type    uniform;
+        axis    distance;
+        start   (1.500000 0.000001 0.005);
+        end     (1.500000 0.120000 0.005);
+        nPoints 320;
+    }
+
+    x_600
+    {
+        type    uniform;
+        axis    distance;
+        start   (1.800000 0.000001 0.005);
+        end     (1.800000 0.120000 0.005);
+        nPoints 320;
+    }
+
+    x_700
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.100000 0.000001 0.005);
+        end     (2.100000 0.120000 0.005);
+        nPoints 320;
+    }
+
+    x_800
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.400000 0.000001 0.005);
+        end     (2.400000 0.120000 0.005);
+        nPoints 320;
+    }
+
+    x_900
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.700000 0.000001 0.005);
+        end     (2.700000 0.120000 0.005);
+        nPoints 320;
+    }
+
+    x_950
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.850000 0.000001 0.005);
+        end     (2.850000 0.120000 0.005);
+        nPoints 320;
+    }
+
+);
+
+fields
+(
+    U
+);

@@ -1,0 +1,153 @@
+type            sets;
+libs            ("libsampling.so");
+
+writeControl    writeTime;
+writeInterval   1;
+
+interpolationScheme cellPoint;
+setFormat       csv;
+
+sets
+(
+
+    x_010
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.030000 0.000001 0.005);
+        end     (0.030000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_020
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.060000 0.000001 0.005);
+        end     (0.060000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_030
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.090000 0.000001 0.005);
+        end     (0.090000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_040
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.120000 0.000001 0.005);
+        end     (0.120000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_050
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.150000 0.000001 0.005);
+        end     (0.150000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_060
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.180000 0.000001 0.005);
+        end     (0.180000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_070
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.210000 0.000001 0.005);
+        end     (0.210000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_080
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.240000 0.000001 0.005);
+        end     (0.240000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_090
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.270000 0.000001 0.005);
+        end     (0.270000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_100
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.300000 0.000001 0.005);
+        end     (0.300000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_120
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.360000 0.000001 0.005);
+        end     (0.360000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_150
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.450000 0.000001 0.005);
+        end     (0.450000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_200
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.600000 0.000001 0.005);
+        end     (0.600000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_250
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.750000 0.000001 0.005);
+        end     (0.750000 0.040000 0.005);
+        nPoints 260;
+    }
+
+    x_300
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.900000 0.000001 0.005);
+        end     (0.900000 0.040000 0.005);
+        nPoints 260;
+    }
+
+);
+
+fields
+(
+    U
+);

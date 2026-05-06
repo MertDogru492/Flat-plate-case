@@ -1,0 +1,249 @@
+type            sets;
+libs            (sampling);
+setFormat       csv;
+interpolationScheme cellPointFace;
+fields          (U);
+
+sets
+(
+    x_100
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.100000 0.000001 0.005);
+        end     (0.100000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_200
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.200000 0.000001 0.005);
+        end     (0.200000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_300
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.300000 0.000001 0.005);
+        end     (0.300000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_400
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.400000 0.000001 0.005);
+        end     (0.400000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_500
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.500000 0.000001 0.005);
+        end     (0.500000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_600
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.600000 0.000001 0.005);
+        end     (0.600000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_700
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.700000 0.000001 0.005);
+        end     (0.700000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_800
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.800000 0.000001 0.005);
+        end     (0.800000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_900
+    {
+        type    uniform;
+        axis    distance;
+        start   (0.900000 0.000001 0.005);
+        end     (0.900000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_1000
+    {
+        type    uniform;
+        axis    distance;
+        start   (1.000000 0.000001 0.005);
+        end     (1.000000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_1100
+    {
+        type    uniform;
+        axis    distance;
+        start   (1.100000 0.000001 0.005);
+        end     (1.100000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_1200
+    {
+        type    uniform;
+        axis    distance;
+        start   (1.200000 0.000001 0.005);
+        end     (1.200000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_1300
+    {
+        type    uniform;
+        axis    distance;
+        start   (1.300000 0.000001 0.005);
+        end     (1.300000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_1400
+    {
+        type    uniform;
+        axis    distance;
+        start   (1.400000 0.000001 0.005);
+        end     (1.400000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_1500
+    {
+        type    uniform;
+        axis    distance;
+        start   (1.500000 0.000001 0.005);
+        end     (1.500000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_1600
+    {
+        type    uniform;
+        axis    distance;
+        start   (1.600000 0.000001 0.005);
+        end     (1.600000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_1700
+    {
+        type    uniform;
+        axis    distance;
+        start   (1.700000 0.000001 0.005);
+        end     (1.700000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_1800
+    {
+        type    uniform;
+        axis    distance;
+        start   (1.800000 0.000001 0.005);
+        end     (1.800000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_1900
+    {
+        type    uniform;
+        axis    distance;
+        start   (1.900000 0.000001 0.005);
+        end     (1.900000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_2000
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.000000 0.000001 0.005);
+        end     (2.000000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_2100
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.100000 0.000001 0.005);
+        end     (2.100000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_2200
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.200000 0.000001 0.005);
+        end     (2.200000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_2300
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.300000 0.000001 0.005);
+        end     (2.300000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_2400
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.400000 0.000001 0.005);
+        end     (2.400000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_2500
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.500000 0.000001 0.005);
+        end     (2.500000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_2600
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.600000 0.000001 0.005);
+        end     (2.600000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_2700
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.700000 0.000001 0.005);
+        end     (2.700000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_2800
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.800000 0.000001 0.005);
+        end     (2.800000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_2900
+    {
+        type    uniform;
+        axis    distance;
+        start   (2.900000 0.000001 0.005);
+        end     (2.900000 0.180000 0.005);
+        nPoints 360;
+    }
+    x_3000
+    {
+        type    uniform;
+        axis    distance;
+        start   (3.000000 0.000001 0.005);
+        end     (3.000000 0.180000 0.005);
+        nPoints 360;
+    }
+);

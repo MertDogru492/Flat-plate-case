@@ -1,0 +1,23 @@
+type                eNTransitionFlatPlate;
+libs                ("libeNTransitionFlatPlate.so");
+
+profilesDir             "postProcessing/profilesFlatPlateWN";
+outputPrefix            eN_flatplate;
+
+kinematicViscosity       1.5e-05;
+velocityScale            1.0;
+lengthScale              1.0;
+
+Ncr                     9.0;
+sigmaMode               gaster;
+edgeThreshold           0.995;
+
+alphaSweep              (0.001 1.0 0.01);
+alphaFDStep             0.02;
+
+useVelocityMagnitude    true;
+useLocalEdgeDirection   false;
+velocityDirection       (1 0 0);
+
+insertWallPoint         true;
+wallPointEpsilon        1e-6;
